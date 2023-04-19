@@ -8,7 +8,8 @@
 		"github.copilot",
 		"GitHub.copilot-labs",
 		"esbenp.prettier-vscode",
-		"dbaeumer.vscode-eslint"
+		"dbaeumer.vscode-eslint",
+		"Prisma.prisma"
 	]
     }
   }
