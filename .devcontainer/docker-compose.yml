@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  dev:
+    container_name: dollplay_dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: sleep infinity
+    volumes:
+      - ..:/workspace
+  # db:
+  #   container_name: dollplay_db
+  #   image: postgres:12.2
+  #   environment:
+  #     POSTGRES_USER: dollplay
+  #     POSTGRES_PASSWORD: dollplay
+  #     POSTGRES_DB: dollplay
+  #   volumes:
+  #     - ./db:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
