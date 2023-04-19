@@ -5,11 +5,21 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    entrypoint: >
+      bash -c " \
+      git config --global --add safe.directory /workspace && \
+      git config --global --add user.name 'MoAI522' && \
+      git config --global --add user.email 'urotanre522@gmail.com' && \
+      git config --global --add core.editor 'code --wait' && \
+      sleep infinity"
     ports:
       - "3000:3000"
+      - "6006:6006"
     command: sleep infinity
     volumes:
       - ..:/workspace
+      - ~/.ssh:/root/.ssh
+      - ~/.config/gh:/root/.config/gh
   # db:
   #   container_name: dollplay_db
   #   image: postgres:12.2
