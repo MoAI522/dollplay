@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  sns:
+    container_name: dollplay_sns
+    build:
+      context: ./dollplay-sns
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3000"
+    entrypoint: >
+      bash -c " \
+      export PATH=$$HOME/.volta/bin:$$PATH && \
+      yarn install && \
+      yarn dev"
+    volumes:
+      - ./dollplay-sns:/workspace
+  db:
+    container_name: dollplay_db
+    image: postgres:15.2
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./dollplay-db/data:/var/lib/postgresql/data
+      - ./dollplay-db/logs:/var/log
